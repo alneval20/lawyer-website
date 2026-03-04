@@ -335,7 +335,7 @@ const Contact = () => {
 
   const handleMailtoFallback = () => {
     const { name, email, subject, message } = formData;
-    const mailtoLink = `mailto:alneval20@gmail.com?subject=${encodeURIComponent(subject || 'Hukuki Destek Talebi')}&body=${encodeURIComponent(`Ad Soyad: ${name}\nE-posta: ${email}\n\nMesaj:\n${message}`)}`;
+    const mailtoLink = `mailto:av.rahimeozpolat@outlook.com?subject=${encodeURIComponent(subject || 'Hukuki Destek Talebi')}&body=${encodeURIComponent(`Ad Soyad: ${name}\nE-posta: ${email}\n\nMesaj:\n${message}`)}`;
     
     const link = document.createElement('a');
     link.href = mailtoLink;
@@ -483,7 +483,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="text-xs font-bold uppercase tracking-widest text-gold mb-1">E-posta</h4>
-                    <p className="text-gray-300 text-sm">alneval20@gmail.com</p>
+                    <p className="text-gray-300 text-sm">av.rahimeozpolat@outlook.com</p>
                   </div>
                 </div>
               </div>

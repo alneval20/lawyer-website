@@ -31,7 +31,7 @@ async function startServer() {
         console.log("Attempting to send email via Resend...");
         const { data, error } = await resend.emails.send({
           from: 'Hukuk Destek <onboarding@resend.dev>',
-          to: ['alneval20@gmail.com'],
+          to: ['av.rahimeozpolat@outlook.com'],
           subject: subject || 'Yeni Hukuki Destek Talebi',
           replyTo: email,
           text: `Ad Soyad: ${name}\nE-posta: ${email}\n\nMesaj:\n${message}`,
