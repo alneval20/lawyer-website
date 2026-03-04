@@ -288,60 +288,20 @@ const Contact = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [showMailtoFallback, setShowMailtoFallback] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setError(null);
-    setShowMailtoFallback(false);
-    
     const { name, email, subject, message } = formData;
     
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name, email, subject, message }),
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        setSubmitted(true);
-        setFormData({ name: '', email: '', subject: '', message: '' });
-        // Reset success message after a delay
-        setTimeout(() => {
-          setSubmitted(false);
-        }, 5000);
-      } else {
-        setError(result.error || 'Bir hata oluştu. Lütfen tekrar deneyin.');
-        if (result.fallback) {
-          setShowMailtoFallback(true);
-        }
-      }
-    } catch (err) {
-      console.error('Submission error:', err);
-      setError('Bağlantı hatası. Lütfen internet bağlantınızı kontrol edin.');
-      setShowMailtoFallback(true);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleMailtoFallback = () => {
-    const { name, email, subject, message } = formData;
     const mailtoLink = `mailto:av.rahimeozpolat@outlook.com?subject=${encodeURIComponent(subject || 'Hukuki Destek Talebi')}&body=${encodeURIComponent(`Ad Soyad: ${name}\nE-posta: ${email}\n\nMesaj:\n${message}`)}`;
     
-    const link = document.createElement('a');
-    link.href = mailtoLink;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    window.location.href = mailtoLink;
+    
+    setSubmitted(true);
+    setFormData({ name: '', email: '', subject: '', message: '' });
+    setTimeout(() => {
+      setSubmitted(false);
+    }, 5000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -367,27 +327,6 @@ const Contact = () => {
                 >
                   <ShieldCheck className="text-green-600 shrink-0" size={18} />
                   <p>Mesajınız başarıyla avukatımıza iletildi. En kısa sürede size dönüş yapılacaktır.</p>
-                </motion.div>
-              )}
-              {error && (
-                <motion.div 
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="mb-8 p-4 bg-red-50 border border-red-100 text-red-800 text-sm rounded-sm flex flex-col gap-3"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-4 h-4 rounded-full bg-red-600 flex items-center justify-center text-white text-[10px] font-bold shrink-0">!</div>
-                    <p>{error}</p>
-                  </div>
-                  {showMailtoFallback && (
-                    <button 
-                      onClick={handleMailtoFallback}
-                      className="text-xs font-bold uppercase tracking-widest text-red-700 hover:underline text-left"
-                    >
-                      E-posta uygulaması ile gönder →
-                    </button>
-                  )}
                 </motion.div>
               )}
             </AnimatePresence>
@@ -441,11 +380,10 @@ const Contact = () => {
               </div>
               <button 
                 type="submit" 
-                disabled={isSubmitting}
-                className={`w-full bg-black text-white py-4 font-bold uppercase tracking-widest hover:bg-gold transition-all duration-300 rounded-sm flex items-center justify-center gap-2 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                className="w-full bg-black text-white py-4 font-bold uppercase tracking-widest hover:bg-gold transition-all duration-300 rounded-sm flex items-center justify-center gap-2"
               >
-                {isSubmitting ? 'Gönderiliyor...' : 'Mesaj Gönder'}
-                {!isSubmitting && <ArrowRight size={14} />}
+                Mesaj Gönder
+                <ArrowRight size={14} />
               </button>
             </form>
           </div>
