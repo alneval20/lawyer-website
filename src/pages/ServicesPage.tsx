@@ -7,6 +7,11 @@ const ServicesPage = () => {
   const location = useLocation();
 
   useEffect(() => {
+    document.title = "Avukatlık Hizmetlerimiz | Av. Rahime Özpolat - İzmir";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', "İzmir'de uzman kadromuzla sunduğumuz aile, ceza, iş, gayrimenkul ve bilişim hukuku alanlarındaki profesyonel avukatlık hizmetlerimiz.");
+    }
     window.scrollTo(0, 0);
   }, [location]);
 

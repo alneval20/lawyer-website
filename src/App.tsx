@@ -538,6 +538,12 @@ const Home = () => {
   const location = useLocation();
 
   useEffect(() => {
+    document.title = "Av. Rahime Özpolat | İzmir Hukuk & Danışmanlık";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', "Av. Rahime Özpolat - İzmir'de aile, ceza, iş ve gayrimenkul hukuku alanlarında profesyonel avukatlık ve danışmanlık hizmetleri.");
+    }
+
     if (location.hash) {
       const element = document.querySelector(location.hash);
       if (element) {
