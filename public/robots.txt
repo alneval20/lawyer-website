@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ais-pre-jtcfocshqypzxixvzjk7lq-495551996573.europe-west2.run.app/sitemap.xml
+Sitemap: https://www.avukatrahomeozpolat.com/sitemap.xml
