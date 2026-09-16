@@ -140,7 +140,7 @@ const ServiceDetail = () => {
                   <div className="w-10 h-10 border border-gold/30 flex items-center justify-center rounded-full">
                     <Phone size={18} className="text-gold" />
                   </div>
-                  <span className="text-sm font-bold">+90 530 912 59 21</span>
+                  <span className="text-sm font-bold">—</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 border border-gold/30 flex items-center justify-center rounded-full">
