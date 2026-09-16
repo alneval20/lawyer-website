@@ -411,7 +411,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="text-xs font-bold uppercase tracking-widest text-gold mb-1">Telefon</h4>
-                    <p className="text-gray-300 text-sm">+90 530 912 59 21</p>
+                    <p className="text-gray-300 text-sm">—</p>
                   </div>
                 </div>
 
